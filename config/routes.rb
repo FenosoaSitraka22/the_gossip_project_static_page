@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get '/welcom/', to: 'static#welcom'
   get '/detaillegossip/:d', to:'static#detaille'
   get  '/:u', to:'static#utilisateur'
+  resources :gossips
 
 end
