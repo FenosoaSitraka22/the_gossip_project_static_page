@@ -1,0 +1,30 @@
+<<!-- form action= "/welcom"  method="POST">
+<h3>Title :</h3>
+  <input type="text" name="nom_du_champ">
+  <h3>Content :</h3>
+  <input type="text" text="nom_du_champ">
+
+  <input type="submit" value="Envoyer le formulaire">
+</form> -->
+
+<html>
+  <body>
+    <!-- ... -->
+
+    <%= form_tag url_for(action: 'create'), method: "post" do %>
+
+      <%= label_tag 'Title' %>
+      <%= text_field_tag 'title' %>
+      <br /> <br />
+
+      <%= label_tag 'Body' %>
+      <%= text_area_tag 'body'%>
+      <br /> <br />
+
+      <%= submit_tag "Create Post" %>
+
+    <% end %>
+
+    <!-- ... -->
+  </body>
+</html>
