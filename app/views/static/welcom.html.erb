@@ -1,0 +1,8 @@
+<h1> BIENVENUE <%=params[:first_name]%> ! Ici c'est notre super site de potins, il est chouette, non ?</h1>
+    <%Gossip.all.each do |d| %>
+        <h3><%=d.user.first_name%></h3>
+        
+        <h3><%=d.title%> <%=link_to"voir","detaillegossip/#{d.id}"%></h3>
+        <h3>---------------</h3>
+            <%end%> 
+	
