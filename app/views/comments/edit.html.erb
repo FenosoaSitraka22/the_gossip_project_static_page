@@ -1,0 +1,10 @@
+<h3>Edit comment</h3>
+<%= form_tag url_for(action: 'update'), method: "patch" do %>
+
+      <%= text_field_tag 'content', Comment.find(params[:id]).content,placeholder: "your comment..." %>
+      <%= submit_tag "edit Comment" %>	  
+<% end %>
+
+<%=form_tag url_for("/gossips/#{params[:gossip_id]}/comments/#{params[:id]}"), method: "delete" do %>
+  	  <%= submit_tag "Delete" %>
+<%end%>

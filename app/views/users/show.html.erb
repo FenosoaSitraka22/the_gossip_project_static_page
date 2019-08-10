@@ -1,0 +1,7 @@
+<% a = User.find(params[:id])%>
+<h4>First Name: <%= a.first_name %></h4>
+<h4>Last Name: <%= a.last_name %></h4>
+<h4>Description: <%= a.desctiption %></h4>
+<h4>E-mail: <%= a.email%></h4>
+<h4>âge: <%= a.age%></h4>
+<h4>Ville: <%= link_to  a.city.city_name%></h4>

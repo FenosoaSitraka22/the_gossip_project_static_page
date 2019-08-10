@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <!-- ... -->
+
+    <%= form_tag url_for(action: 'update'), method: "patch" do %>
+
+      <%= label_tag 'Title'%>
+      <%= text_field_tag 'title',@g.title %>
+       <p><%= @g.errors[:title].first %></p>
+      <br /> <br />
+
+      <%= label_tag 'Body' %>
+      <%= text_area_tag 'body', @g.content%>
+      <br /> <br />
+
+      <%= submit_tag "edit Post" %>
+    <% end %>
+
+  <%= form_tag url_for(action: 'destroy'), method: "delete" do %>
+    <%= submit_tag "Delete this potin" %>
+  <% end %>
+    <!-- ... -->
+  </body>
+</html>

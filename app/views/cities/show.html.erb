@@ -1,0 +1,12 @@
+<% a = City.find(params[:id])%>
+<h1><%= a.city_name%></h1>
+<h3> Code zip :<%= a.zip_code%></h3>
+
+<h3>Listes des potins créés dans cette ville</h3>
+  <%User.where(city_id: a.id).each do |u|%>
+     <% Gossip.where(user_id: u.id).each do |d|%>
+  		 <h4><%=d.title%> <%=link_to"voir", gossip_path(d.id)%> </h4>
+  		 <h3>---------------</h3>
+     <%end%> 
+             
+  <%end%> 

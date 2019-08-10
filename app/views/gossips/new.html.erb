@@ -11,15 +11,18 @@
   <body>
     <!-- ... -->
 
+
     <%= form_tag url_for(action: 'create'), method: "post" do %>
 
       <%= label_tag 'Title' %>
-      <%= text_field_tag 'title' %>
-      <br /> <br />
+      <%= text_field_tag 'title',nil, placeholder: "Title" %>
+      <br/> <br/>
 
       <%= label_tag 'Body' %>
-      <%= text_area_tag 'body'%>
-      <br /> <br />
+      <%= text_area_tag 'body',nil,placeholder: "Content"%>
+      <br /> 
+
+    <%=select_tag "selected_tag", options_for_select( @@t)%>
 
       <%= submit_tag "Create Post" %>
 

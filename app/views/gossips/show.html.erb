@@ -1,8 +1,35 @@
-<h1> BIENVENUE  ! Ici c'est notre super site de potins, il est chouette, non ?</h1>
-	<h3> <%=link_to"Créer votre propre potin ",new_gossip_path%></h3>
-    <%Gossip.all.each do |d| %>
-        <h3><%=d.user.first_name%></h3>
-        
-        <h3><%=d.title%> <%=link_to"voir","detaillegossip/#{d.id}"%></h3>
-        <h3>---------------</h3>
-            <%end%> 
+<% a = Gossip.find(params[:id])%>
+<h2>Title: <%= a.title %></h2>
+<h4>Content: <%= a.content %></h4>
+<h4>Author's name: <%=link_to"#{a.user.first_name} #{ a.user.last_name}", user_path(a.user.id)%></h4>
+<h4>Author's Town: <%=link_to "#{a.user.city.city_name}",city_path(a.user.city.id)%></h4>
+<h5> Edit on <%= a.created_at%> </h5> 
+<%=link_to "Edit potin",  edit_gossip_path(params[:id])%>
+<h1><%= form_tag url_for(action: 'destroy'), method: "delete" do %>
+  <%= submit_tag "Delete this potin" %>
+<% end %></h1>
+    <br>
+
+  <%Comment.where(gossip_id: params[:id]).each do |c|%>
+	<h3><%= link_to c.user.first_name, user_path(c.user.id)%></h3>
+ 	 <%= c.content %> <%= link_to "Edit comment",  edit_gossip_comment_path(params[:id],c.id)%> 
+	 </br>
+	 </br>
+
+	
+  <%end%>
+
+ <%= form_tag( "/gossips/#{params[:id]}/comments", method: "post") do %>
+    <h5>Comment</h5>
+
+    <%= text_field_tag 'q', nil,  placeholder: "your comment..." %>
+    <%= submit_tag("Comment") %>
+ <% end %>
+
+  
+
+
+
+
+
+

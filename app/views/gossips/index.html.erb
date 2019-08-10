@@ -1,0 +1,13 @@
+<h1> BIENVENUE  ! Ici c'est notre super site de potins, il est chouette, non ?</h1>
+	<h3> <%=link_to"Create your own potin here",new_gossip_path%></h3>
+    <%Gossip.all.each do |d| %>
+        <h3><%=d.user.first_name%> </h3>
+      	 
+        <h4><%=d.title%> </h4> 
+        </d>
+        <h5><%=link_to"see more about this Gossip", gossip_path(d.id)%></h5>
+        </d>
+          <h5><%= Comment.where(gossip: d).length %> Comment(s)</h5>
+        <h3>---------------</h3>
+    <%end%> 
+	
